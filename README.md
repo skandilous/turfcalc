@@ -11,6 +11,7 @@ and the trust pages Google AdSense needs. No build step, no backend — pure HTM
 | `how-much-turf-do-i-need.html` | Worked examples guide | "how much turf do i need", "turf calculator australia" |
 | `how-to-measure-your-lawn.html` | Measuring guide | "how to measure lawn for turf" |
 | `turf-prices-australia.html` | Cost guide (commercial intent) | "turf prices australia", "cost of turf per m2" |
+| `turf-prices-sydney.html` | Sydney-specific cost guide | "turf prices sydney", "cost of turf sydney" |
 | `how-to-lay-turf.html` | Laying guide | "how to lay turf", "laying turf australia" |
 | `turf-types-australia.html` | Variety comparison | "turf types australia", "buffalo vs kikuyu" |
 | `about.html` `contact.html` `privacy-policy.html` | Trust pages (required for AdSense) | — |
