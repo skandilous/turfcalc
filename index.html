@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turf Calculator Australia — How Much Turf Do I Need? (m²)</title>
+<meta name="description" content="Free turf calculator for Australian lawns. Measure your area in m², add wastage, and get the exact turf, pallets and cost you need. Works for odd-shaped yards.">
+<link rel="canonical" href="https://turfcalculator.com.au/">
+<meta property="og:title" content="Turf Calculator Australia — How Much Turf Do I Need?">
+<meta property="og:description" content="Work out exactly how many square metres of turf your lawn needs, plus pallets and cost.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- ============================================================
+     ADSENSE: after approval, paste your AdSense <script> here.
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+     ============================================================ -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How much turf do I need?","acceptedAnswer":{"@type":"Answer","text":"Measure the length and width of each lawn area in metres, multiply them for the square metres, add every area together, then add 5–10% for wastage from cuts and curves. The calculator on this page does this automatically."}},
+    {"@type":"Question","name":"How is turf sold in Australia?","acceptedAnswer":{"@type":"Answer","text":"Turf is sold by the square metre (m²) and usually delivered on pallets. Pallet coverage varies by supplier and turf type, commonly around 40–75 m² per pallet."}},
+    {"@type":"Question","name":"How much extra turf should I order for wastage?","acceptedAnswer":{"@type":"Answer","text":"Allow about 5% for a simple rectangular lawn and up to 10% for yards with curves, garden beds or lots of cuts around paths and trees."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#calc">Skip to calculator</a>
+<div class="topline"></div>
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="index.html"><span class="mark"></span>TurfCalc<span style="color:var(--turf)">.au</span></a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Calculator</a>
+      <a href="how-much-turf-do-i-need.html">How much turf</a>
+      <a href="turf-prices-australia.html">Prices</a>
+      <a href="how-to-lay-turf.html">Laying guide</a>
+      <a href="turf-types-australia.html">Turf types</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Australian lawn · measured in m²</div>
+    <h1>How much turf do I need?</h1>
+    <p class="lead">Measure your lawn, add a little for wastage, and get the exact square metres, pallets and cost — including odd-shaped yards with garden beds and curves.</p>
+  </div>
+</section>
+
+<main class="wrap" id="calc">
+  <div class="calc-grid">
+    <!-- INPUTS -->
+    <div class="card">
+      <h2>1. Measure your lawn</h2>
+      <p class="hint">Add one area for each section of lawn. Enter metres — the calculator converts to m² for you.</p>
+      <div id="areas"></div>
+
+      <div class="row-inline" style="margin-top:6px">
+        <button class="btn ghost small" type="button" onclick="addArea('rectangle')">+ Rectangle</button>
+        <button class="btn ghost small" type="button" onclick="addArea('circle')">+ Circle</button>
+        <button class="btn ghost small" type="button" onclick="addArea('triangle')">+ Triangle</button>
+      </div>
+
+      <h2>2. Add wastage &amp; cost</h2>
+      <div class="area-row" style="border-style:solid">
+        <div>
+          <label for="wastage">Wastage %</label>
+          <input id="wastage" type="number" value="5" min="0" max="30" step="1" oninput="calc()">
+        </div>
+        <div>
+          <label for="price">Price per m² ($)</label>
+          <input id="price" type="number" placeholder="e.g. 12" min="0" step="0.5" oninput="calc()">
+        </div>
+        <div>
+          <label for="pallet">m² per pallet</label>
+          <input id="pallet" type="number" value="50" min="1" step="1" oninput="calc()">
+        </div>
+        <div></div>
+      </div>
+      <p class="hint">Tip: use 5% for a simple rectangle, up to 10% for curves and garden beds. Pallet coverage varies by supplier — 50 m² is a common default.</p>
+    </div>
+
+    <!-- READOUT -->
+    <aside class="readout" aria-live="polite">
+      <div class="rlabel">Turf required</div>
+      <div class="big"><span id="r-total">0</span><span class="unit">m²</span></div>
+      <div class="underline"></div>
+      <div class="line"><span class="k">Lawn area measured</span><span class="v"><span id="r-sub">0</span> m²</span></div>
+      <div class="line"><span class="k">Wastage added</span><span class="v"><span id="r-waste">0</span> m²</span></div>
+      <div class="line"><span class="k">Pallets (approx.)</span><span class="v" id="r-pallets">0</span></div>
+      <div class="line"><span class="k">Estimated cost</span><span class="v" id="r-cost">—</span></div>
+      <p class="muted-note">Estimates only. Always confirm pallet size, availability and current pricing with your local turf supplier before ordering.</p>
+    </aside>
+  </div>
+
+  <div class="ad-slot">Ad space</div>
+
+  <!-- ===== supporting content (helps ranking + AdSense value) ===== -->
+  <section class="narrow" style="margin:10px auto 0">
+    <h2>How to use the turf calculator</h2>
+    <p>Working out how much turf you need comes down to one simple idea: find the area of every patch of lawn in square metres, add them together, then order a little extra so you're not left short on the day. This calculator handles the maths — including the fiddly bits like circular garden borders and triangular corners — so you can order with confidence.</p>
+    <p>Start by adding a <strong>rectangle</strong> for your main lawn and typing in the length and width in metres. Most backyards aren't perfect rectangles, so break yours into sections: a big rectangle for the open lawn, a smaller one for the side strip, and a triangle for that awkward corner by the fence. Each area you add is included in the running total on the right.</p>
+
+    <div class="callout">
+      <strong>Why the wastage percentage matters.</strong> Turf is cut to fit as you lay it, and the offcuts around paths, trees and curves can't always be reused. Ordering 5–10% extra means you finish the job without a half-day gap waiting on another pallet. It's the single most common mistake first-time turf layers make.
+    </div>
+
+    <h2>Turf calculator FAQ</h2>
+    <div class="faq">
+      <details open>
+        <summary>How much turf do I need for my lawn?</summary>
+        <p>Measure the length and width of each lawn section in metres and multiply them to get square metres. Add every section together, then add 5–10% for wastage. For example, a 6 m × 4 m backyard is 24 m²; with 10% wastage you'd order about 26–27 m². Enter your own measurements above for an exact figure.</p>
+      </details>
+      <details>
+        <summary>How is turf sold and delivered in Australia?</summary>
+        <p>Turf is sold by the square metre and delivered fresh on pallets, usually cut into slabs or rolls. How many m² fit on a pallet depends on the supplier and turf variety — commonly somewhere between 40 and 75 m². Set your supplier's pallet size in the calculator to see how many pallets you'll need.</p>
+      </details>
+      <details>
+        <summary>Should I round up when ordering turf?</summary>
+        <p>Yes. It's better to have a spare slab or two than to run out mid-job — freshly cut turf needs to go down quickly, and a return trip for a small top-up isn't always possible. Round up to the nearest whole pallet or half pallet if your supplier allows it.</p>
+      </details>
+      <details>
+        <summary>Does the calculator work for sloped or terraced lawns?</summary>
+        <p>Measure the surface following the slope rather than the flat "map" distance — a slope has more surface area than it looks from above. For terraced or heavily contoured yards, measure each level separately and add them as individual areas.</p>
+      </details>
+    </div>
+
+    <div class="related">
+      <a href="how-to-measure-your-lawn.html"><span class="t">How to measure your lawn</span><span class="d">Odd shapes, slopes and quick methods that get you an accurate m².</span></a>
+      <a href="turf-prices-australia.html"><span class="t">Turf prices in Australia</span><span class="d">Indicative per-m² costs by variety, plus delivery and laying.</span></a>
+      <a href="how-to-lay-turf.html"><span class="t">How to lay turf</span><span class="d">Prep, laying and watering — a step-by-step for a lawn that takes.</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="fbrand">TurfCalc.au</div>
+        <p style="max-width:340px;color:#93a58f;margin-top:8px">A free turf calculator and lawn guides for Australian backyards. Independent — not affiliated with any turf supplier.</p>
+      </div>
+      <div class="flinks">
+        <a href="how-much-turf-do-i-need.html">How much turf</a>
+        <a href="turf-types-australia.html">Turf types</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy</a>
+      </div>
+    </div>
+    <div class="fine">© <span id="yr"></span> TurfCalc.au · Estimates are a guide only; confirm measurements and pricing with your supplier.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+let idc = 0;
+const areasEl = document.getElementById('areas');
+
+function addArea(shape){
+  const id = 'a' + (idc++);
+  const div = document.createElement('div');
+  div.className = 'area-row ' + shape;
+  div.dataset.shape = shape;
+  div.id = id;
+  let fields = '';
+  if (shape === 'rectangle'){
+    fields =
+      `<div><label>Length (m)</label><input type="number" class="f1" min="0" step="0.1" oninput="calc()" placeholder="e.g. 6"></div>
+       <div><label>Width (m)</label><input type="number" class="f2" min="0" step="0.1" oninput="calc()" placeholder="e.g. 4"></div>
+       <div><label>Label (optional)</label><input type="text" class="lab" placeholder="Back lawn"></div>`;
+  } else if (shape === 'circle'){
+    fields =
+      `<div><label>Diameter (m)</label><input type="number" class="f1" min="0" step="0.1" oninput="calc()" placeholder="e.g. 3"></div>
+       <div><label>&nbsp;</label><input type="text" value="Round area" disabled style="background:#f4f5ef;color:#9aa295"></div>
+       <div><label>Label (optional)</label><input type="text" class="lab" placeholder="Garden circle"></div>`;
+  } else {
+    fields =
+      `<div><label>Base (m)</label><input type="number" class="f1" min="0" step="0.1" oninput="calc()" placeholder="e.g. 4"></div>
+       <div><label>Height (m)</label><input type="number" class="f2" min="0" step="0.1" oninput="calc()" placeholder="e.g. 3"></div>
+       <div><label>Label (optional)</label><input type="text" class="lab" placeholder="Corner"></div>`;
+  }
+  div.innerHTML = fields + `<button class="btn icon" type="button" aria-label="Remove area" onclick="this.parentElement.remove();calc()">✕</button>`;
+  areasEl.appendChild(div);
+}
+
+function areaOf(row){
+  const shape = row.dataset.shape;
+  const f1 = parseFloat(row.querySelector('.f1')?.value) || 0;
+  const f2 = parseFloat(row.querySelector('.f2')?.value) || 0;
+  if (shape === 'rectangle') return f1 * f2;
+  if (shape === 'triangle') return 0.5 * f1 * f2;
+  if (shape === 'circle')   return Math.PI * Math.pow(f1/2, 2);
+  return 0;
+}
+
+function fmt(n){ return (Math.round(n*100)/100).toLocaleString('en-AU'); }
+
+function calc(){
+  let sub = 0;
+  document.querySelectorAll('.area-row[data-shape]').forEach(r => sub += areaOf(r));
+  const waste = Math.max(0, parseFloat(document.getElementById('wastage').value) || 0);
+  const price = parseFloat(document.getElementById('price').value) || 0;
+  const pallet = Math.max(1, parseFloat(document.getElementById('pallet').value) || 50);
+
+  const wasteM2 = sub * (waste/100);
+  const total = sub + wasteM2;
+  const pallets = total > 0 ? Math.ceil(total / pallet) : 0;
+  const cost = total * price;
+
+  document.getElementById('r-sub').textContent = fmt(sub);
+  document.getElementById('r-waste').textContent = fmt(wasteM2);
+  document.getElementById('r-total').textContent = fmt(total);
+  document.getElementById('r-pallets').textContent = pallets;
+  document.getElementById('r-cost').textContent = price > 0 ? '$' + fmt(cost) : '—';
+}
+
+// start with one rectangle
+addArea('rectangle');
+calc();
+</script>
+</body>
+</html>

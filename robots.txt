@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://turfcalculator.com.au/sitemap.xml
