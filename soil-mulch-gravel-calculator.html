@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soil, Mulch &amp; Gravel Calculator (m³) — How Much Do I Need? Australia</title>
+<meta name="description" content="Free soil, mulch and gravel calculator for Australian gardens. Enter your area and depth to get the cubic metres, bags and bulk bags you need, plus an estimated cost.">
+<link rel="canonical" href="https://turfcalculator.com.au/soil-mulch-gravel-calculator">
+<meta property="og:title" content="Soil, Mulch & Gravel Calculator (m³) — Australia">
+<meta property="og:description" content="Work out how much soil, mulch or gravel you need in cubic metres, bags and bulk bags.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- ADSENSE: paste your AdSense <script> tag here after approval. -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How much mulch do I need?","acceptedAnswer":{"@type":"Answer","text":"Multiply your garden area in square metres by the depth in metres to get cubic metres. For mulch, a depth of 50–75 mm (0.05–0.075 m) is typical. A 24 m² bed at 75 mm needs about 1.8 m³."}},
+    {"@type":"Question","name":"How is soil, mulch and gravel sold in Australia?","acceptedAnswer":{"@type":"Answer","text":"By volume in cubic metres (m³) for bulk deliveries, or in bags — commonly 25 litres. There are 1,000 litres in a cubic metre, so one cubic metre is roughly forty 25-litre bags."}},
+    {"@type":"Question","name":"What depth of mulch, soil or gravel should I use?","acceptedAnswer":{"@type":"Answer","text":"Garden mulch 50–75 mm, lawn underlay soil around 100 mm, vegetable beds 300 mm or more, decorative gravel 50–75 mm and gravel driveways around 100 mm."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#calc">Skip to calculator</a>
+<div class="topline"></div>
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="/"><span class="mark"></span>TurfCalc<span style="color:var(--turf)">.au</span></a>
+    <nav class="nav-links">
+      <a href="/">Calculator</a>
+      <a href="/soil-mulch-gravel-calculator" class="active">Soil &amp; mulch</a>
+      <a href="/how-much-turf-do-i-need">How much turf</a>
+      <a href="/turf-prices-australia">Prices</a>
+      <a href="/how-to-lay-turf">Laying guide</a>
+      <a href="/turf-types-australia">Turf types</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Australian gardens · measured in m³</div>
+    <h1>Soil, mulch &amp; gravel calculator</h1>
+    <p class="lead">Enter your area and how deep you want to go, and get the exact cubic metres, bags and bulk bags to order — with an estimated cost.</p>
+  </div>
+</section>
+
+<main class="wrap" id="calc">
+  <div class="calc-grid">
+    <!-- INPUTS -->
+    <div class="card">
+      <h2>1. What are you spreading?</h2>
+      <div class="area-row" style="border-style:solid">
+        <div>
+          <label for="material">Material</label>
+          <select id="material" onchange="setDepth();calc()">
+            <option value="75">Garden mulch (75&nbsp;mm)</option>
+            <option value="100">Lawn underlay soil (100&nbsp;mm)</option>
+            <option value="300">Vegetable garden soil (300&nbsp;mm)</option>
+            <option value="60">Decorative gravel (60&nbsp;mm)</option>
+            <option value="100">Driveway gravel (100&nbsp;mm)</option>
+            <option value="custom">Custom depth…</option>
+          </select>
+        </div>
+        <div>
+          <label for="depth">Depth (mm)</label>
+          <input id="depth" type="number" value="75" min="1" step="5" oninput="calc()">
+        </div>
+        <div></div>
+        <div></div>
+      </div>
+      <p class="hint">Not sure how deep? Mulch 50–75&nbsp;mm suppresses weeds; lawn soil ~100&nbsp;mm; veggie beds 300&nbsp;mm+; gravel 50–100&nbsp;mm.</p>
+
+      <h2>2. Measure the area</h2>
+      <p class="hint">Add one area for each bed or section. Enter metres — we convert to m² and then m³.</p>
+      <div id="areas"></div>
+      <div class="row-inline" style="margin-top:6px">
+        <button class="btn ghost small" type="button" onclick="addArea('rectangle')">+ Rectangle</button>
+        <button class="btn ghost small" type="button" onclick="addArea('circle')">+ Circle</button>
+      </div>
+
+      <h2>3. Bags &amp; cost (optional)</h2>
+      <div class="area-row" style="border-style:solid">
+        <div>
+          <label for="bag">Bag size (litres)</label>
+          <input id="bag" type="number" value="25" min="1" step="5" oninput="calc()">
+        </div>
+        <div>
+          <label for="bulk">Bulk bag (m³)</label>
+          <input id="bulk" type="number" value="1" min="0.1" step="0.1" oninput="calc()">
+        </div>
+        <div>
+          <label for="price">Price per m³ ($)</label>
+          <input id="price" type="number" placeholder="e.g. 65" min="0" step="1" oninput="calc()">
+        </div>
+        <div></div>
+      </div>
+      <p class="hint">There are 1,000&nbsp;litres in a cubic metre, so one m³ ≈ forty 25-litre bags.</p>
+    </div>
+
+    <!-- READOUT -->
+    <aside class="readout" aria-live="polite">
+      <div class="rlabel">Volume required</div>
+      <div class="big"><span id="r-total">0</span><span class="unit">m³</span></div>
+      <div class="underline"></div>
+      <div class="line"><span class="k">Area covered</span><span class="v"><span id="r-area">0</span> m²</span></div>
+      <div class="line"><span class="k">Depth</span><span class="v"><span id="r-depth">75</span> mm</span></div>
+      <div class="line"><span class="k">Bags needed</span><span class="v" id="r-bags">0</span></div>
+      <div class="line"><span class="k">Bulk bags</span><span class="v" id="r-bulk">0</span></div>
+      <div class="line"><span class="k">Estimated cost</span><span class="v" id="r-cost">—</span></div>
+      <p class="muted-note">Estimates only. Materials settle and compact, so order a little extra and confirm bag sizes and pricing with your supplier.</p>
+    </aside>
+  </div>
+
+  <div class="ad-slot">Ad space</div>
+
+  <section class="narrow" style="margin:10px auto 0">
+    <h2>How to work out how much soil, mulch or gravel you need</h2>
+    <p>Where turf is measured in square metres, loose materials like soil, mulch and gravel are measured by volume — in cubic metres (m³). The maths is one extra step: work out the area you're covering, then multiply by how deep you want the material to sit.</p>
+    <div class="callout"><strong>Volume (m³) = area (m²) × depth (m)</strong><br>A 24&nbsp;m² garden bed at 75&nbsp;mm (0.075&nbsp;m) of mulch needs 24 × 0.075 = <strong>1.8&nbsp;m³</strong>.</div>
+    <p>The calculator does this for you: pick your material (which sets a sensible depth you can adjust), add each area, and it returns the cubic metres plus how that converts into bags or bulk bags.</p>
+
+    <h2>Recommended depths</h2>
+    <table class="data">
+      <tr><th>Material / use</th><th>Typical depth</th></tr>
+      <tr><td>Garden mulch (weed suppression)</td><td>50–75 mm</td></tr>
+      <tr><td>Lawn underlay soil (before turf)</td><td>~100 mm</td></tr>
+      <tr><td>New vegetable garden bed</td><td>300 mm+</td></tr>
+      <tr><td>Decorative gravel / pebble</td><td>50–75 mm</td></tr>
+      <tr><td>Gravel driveway</td><td>~100 mm</td></tr>
+    </table>
+
+    <h2>Bags or bulk?</h2>
+    <p>As a rough guide, once you're past about half a cubic metre, a bulk delivery usually works out cheaper and saves lugging dozens of bags. Below that, bagged material is convenient and easy to store. The calculator shows both so you can compare — there are 1,000 litres in a cubic metre, so a single m³ is roughly forty 25-litre bags.</p>
+
+    <h2>Soil, mulch &amp; gravel FAQ</h2>
+    <div class="faq">
+      <details open>
+        <summary>How much mulch do I need for my garden?</summary>
+        <p>Measure each bed's area in square metres, then multiply by your mulch depth in metres (75 mm = 0.075 m). Add the beds together for your total in cubic metres. Enter your measurements above for an exact figure and a bag count.</p>
+      </details>
+      <details>
+        <summary>How many bags of soil are in a cubic metre?</summary>
+        <p>It depends on the bag size. With common 25-litre bags, one cubic metre is about 40 bags (1,000 ÷ 25). Set your bag size in the calculator and it works out the number for you.</p>
+      </details>
+      <details>
+        <summary>Should I order extra?</summary>
+        <p>Yes — a little. Mulch and soil settle, and it's easy to underestimate depth over an uneven bed. Ordering 5–10% extra means you finish the job and have a bit spare for topping up later.</p>
+      </details>
+    </div>
+
+    <div class="related">
+      <a href="/"><span class="t">Turf calculator</span><span class="d">Laying a new lawn? Get exact m², pallets and cost.</span></a>
+      <a href="/how-to-lay-turf"><span class="t">How to lay turf</span><span class="d">Prep, laying and watering, step by step.</span></a>
+      <a href="/turf-prices-australia"><span class="t">Turf prices</span><span class="d">What a new lawn costs in Australia.</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="fbrand">TurfCalc.au</div>
+        <p style="max-width:340px;color:#93a58f;margin-top:8px">Free lawn and garden calculators for Australian backyards. Independent — not affiliated with any supplier.</p>
+      </div>
+      <div class="flinks">
+        <a href="/">Turf calculator</a>
+        <a href="/soil-mulch-gravel-calculator">Soil &amp; mulch</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy-policy">Privacy</a>
+      </div>
+    </div>
+    <div class="fine">© <span id="yr"></span> TurfCalc.au · Estimates are a guide only; confirm measurements and pricing with your supplier.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+let idc = 0;
+const areasEl = document.getElementById('areas');
+
+function setDepth(){
+  const m = document.getElementById('material');
+  if (m.value !== 'custom') document.getElementById('depth').value = m.value;
+}
+
+function addArea(shape){
+  const div = document.createElement('div');
+  div.className = 'area-row ' + shape;
+  div.dataset.shape = shape;
+  let fields = '';
+  if (shape === 'rectangle'){
+    fields =
+      `<div><label>Length (m)</label><input type="number" class="f1" min="0" step="0.1" oninput="calc()" placeholder="e.g. 6"></div>
+       <div><label>Width (m)</label><input type="number" class="f2" min="0" step="0.1" oninput="calc()" placeholder="e.g. 4"></div>
+       <div><label>Label (optional)</label><input type="text" class="lab" placeholder="Front bed"></div>`;
+  } else {
+    fields =
+      `<div><label>Diameter (m)</label><input type="number" class="f1" min="0" step="0.1" oninput="calc()" placeholder="e.g. 3"></div>
+       <div><label>&nbsp;</label><input type="text" value="Round bed" disabled style="background:#f4f5ef;color:#9aa295"></div>
+       <div><label>Label (optional)</label><input type="text" class="lab" placeholder="Garden circle"></div>`;
+  }
+  div.innerHTML = fields + `<button class="btn icon" type="button" aria-label="Remove area" onclick="this.parentElement.remove();calc()">✕</button>`;
+  areasEl.appendChild(div);
+}
+
+function areaOf(row){
+  const f1 = parseFloat(row.querySelector('.f1')?.value) || 0;
+  const f2 = parseFloat(row.querySelector('.f2')?.value) || 0;
+  if (row.dataset.shape === 'rectangle') return f1 * f2;
+  if (row.dataset.shape === 'circle')    return Math.PI * Math.pow(f1/2, 2);
+  return 0;
+}
+function fmt(n){ return (Math.round(n*100)/100).toLocaleString('en-AU'); }
+
+function calc(){
+  let area = 0;
+  document.querySelectorAll('.area-row[data-shape]').forEach(r => area += areaOf(r));
+  const depth = Math.max(0, parseFloat(document.getElementById('depth').value) || 0);
+  const bag   = Math.max(1, parseFloat(document.getElementById('bag').value) || 25);
+  const bulk  = Math.max(0.1, parseFloat(document.getElementById('bulk').value) || 1);
+  const price = parseFloat(document.getElementById('price').value) || 0;
+
+  const m3 = area * (depth/1000);
+  document.getElementById('r-area').textContent  = fmt(area);
+  document.getElementById('r-depth').textContent = fmt(depth);
+  document.getElementById('r-total').textContent = fmt(m3);
+  document.getElementById('r-bags').textContent  = m3 > 0 ? Math.ceil(m3 * 1000 / bag) : 0;
+  document.getElementById('r-bulk').textContent  = m3 > 0 ? Math.ceil(m3 / bulk) : 0;
+  document.getElementById('r-cost').textContent  = price > 0 ? '$' + fmt(m3 * price) : '—';
+}
+
+addArea('rectangle');
+setDepth();
+calc();
+</script>
+</body>
+</html>
