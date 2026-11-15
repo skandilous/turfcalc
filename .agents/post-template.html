@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-011SLMGGJK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-011SLMGGJK');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} — TurfCalc.au</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<link rel="canonical" href="https://turfcalculator.com.au/guides/{{SLUG}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<link rel="stylesheet" href="/style.css">
+<!-- ADSENSE: paste your AdSense <script> tag here after approval. -->
+<meta name="robots" content="noindex"><!-- AGENTS: remove this noindex line in real posts -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Article","headline":"{{H1}}","description":"{{META_DESCRIPTION}}","datePublished":"{{DATE_ISO}}","dateModified":"{{DATE_ISO}}","author":{"@type":"Organization","name":"TurfCalc.au","url":"https://turfcalculator.com.au/"},"publisher":{"@type":"Organization","name":"TurfCalc.au"},"mainEntityOfPage":"https://turfcalculator.com.au/guides/{{SLUG}}"},
+ {"@type":"FAQPage","mainEntity":[{{FAQ_JSONLD}}]},
+ {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://turfcalculator.com.au/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://turfcalculator.com.au/guides/"},{"@type":"ListItem","position":3,"name":"{{H1}}"}]}
+]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topline"></div>
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="/"><span class="mark"></span>TurfCalc<span style="color:var(--turf)">.au</span></a>
+    <nav class="nav-links">
+      <a href="/">Calculator</a>
+      <a href="/soil-mulch-gravel-calculator">Soil &amp; mulch</a>
+      <a href="/how-much-turf-do-i-need">How much turf</a>
+      <a href="/turf-prices-australia">Prices</a>
+      <a href="/how-to-lay-turf">Laying guide</a>
+      <a href="/turf-types-australia">Turf types</a>
+      <a href="/guides/">Guides</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap content" id="main">
+<div class="narrow">
+<p class="crumbs"><a href="/">Home</a> › <a href="/guides/">Guides</a></p>
+<h1>{{H1}}</h1>
+<p class="byline">Updated {{DATE_HUMAN}} · TurfCalc.au guides</p>
+<!-- Answer-first summary (GEO): 2–4 sentences that directly answer the main query, with numbers. -->
+<p class="lead">{{ANSWER_FIRST_SUMMARY}}</p>
+
+<!-- Body: H2 sections phrased as the questions people ask. Short paragraphs, tables for numbers, Australian spelling. -->
+{{BODY}}
+
+<h2>Frequently asked questions</h2>
+{{FAQ_HTML}}
+
+<h2>Sources</h2>
+<ul class="sources">
+{{SOURCES_LI}}
+</ul>
+
+<div class="ad-slot">Ad space</div>
+<div class="related">
+{{RELATED_LINKS}}
+</div>
+</div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="fbrand">TurfCalc.au</div>
+        <p style="max-width:340px;color:#93a58f;margin-top:8px">A free turf calculator and lawn guides for Australian backyards. Independent — not affiliated with any turf supplier.</p>
+      </div>
+      <div class="flinks">
+        <a href="/how-much-turf-do-i-need">How much turf</a>
+        <a href="/turf-types-australia">Turf types</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy-policy">Privacy</a>
+      </div>
+    </div>
+    <div class="fine">© <span id="yr"></span> TurfCalc.au · Estimates are a guide only; confirm measurements and pricing with your supplier.</div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body></html>

@@ -1,0 +1,18 @@
+# TurfCalc.au
+
+> Free, independent turf calculator and lawn guides for Australian homeowners. Work out how much turf (m²), soil, mulch or gravel (m³) you need, what it costs in Australia, and how to lay and care for a new lawn. Not affiliated with any turf supplier.
+
+## Calculators
+- [Turf calculator](https://turfcalculator.com.au/): area in m² from lawn shapes, wastage allowance, pallets and estimated cost
+- [Soil, mulch & gravel calculator](https://turfcalculator.com.au/soil-mulch-gravel-calculator): cubic metres and bags from area and depth
+
+## Core guides
+- [How much turf do I need?](https://turfcalculator.com.au/how-much-turf-do-i-need): worked examples in m² with wastage
+- [How to measure your lawn](https://turfcalculator.com.au/how-to-measure-your-lawn): measuring rectangles, curves and odd shapes
+- [Turf prices in Australia](https://turfcalculator.com.au/turf-prices-australia): cost per m² by variety
+- [Turf prices in Sydney](https://turfcalculator.com.au/turf-prices-sydney): Sydney cost per m² by variety
+- [How to lay turf](https://turfcalculator.com.au/how-to-lay-turf): ground preparation, laying and watering in
+- [Turf types in Australia](https://turfcalculator.com.au/turf-types-australia): buffalo, kikuyu, couch and zoysia compared
+
+## Guides
+- [All guides](https://turfcalculator.com.au/guides/)
