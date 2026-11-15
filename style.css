@@ -216,3 +216,13 @@ footer.site .fine { border-top: 1px solid rgba(255,255,255,.12); margin-top: 26p
 @media (prefers-reduced-motion: reduce){ * { scroll-behavior: auto !important; transition: none !important; } }
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 12px; top: 12px; background: #fff; padding: 8px 14px; border-radius: 8px; z-index: 50; }
+
+/* Guides section */
+.crumbs { font-size: .9rem; color: var(--muted); margin-bottom: .5rem; }
+.crumbs a { color: var(--muted); }
+.byline { font-size: .9rem; color: var(--muted); margin-top: -.25rem; }
+.guide-list { list-style: none; padding: 0; }
+.guide-list li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.guide-list li a { font-weight: 600; }
+.guide-list li .d { display: block; color: var(--muted); font-size: .95rem; }
+.sources { font-size: .92rem; color: var(--muted); }
