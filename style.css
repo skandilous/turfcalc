@@ -162,6 +162,7 @@ input:focus, select:focus { outline: 3px solid rgba(78,139,58,.28); outline-offs
 main.content { padding: 20px 0 60px; }
 .content h1 { margin-bottom: .3em; }
 .content .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.6em; }
+.byline { font-size: .9rem; color: var(--muted); margin-top: -.25rem; }
 
 .callout {
   background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--wattle);
